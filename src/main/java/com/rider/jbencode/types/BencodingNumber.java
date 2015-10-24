@@ -2,9 +2,10 @@ package com.rider.jbencode.types;
 
 /**
  * Class representing a bencoded number
+ *
  * @author Ciaron Rider
  */
-public class BencodingNumber implements BencodingElement {
+public final class BencodingNumber implements BencodingElement {
     /**
      * The long value (long to allows large numbers)
      */

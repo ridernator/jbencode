@@ -29,6 +29,7 @@ public final class BencodingString implements BencodingElement {
 
     /**
      * Copy constructor
+     *
      * @param bencodingString The object to copy from
      */
     public BencodingString(final BencodingString bencodingString) {

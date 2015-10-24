@@ -1,11 +1,11 @@
 package com.rider.jbencode;
 
-import com.rider.jbencode.types.BencodingNumber;
-import com.rider.jbencode.types.BencodingList;
-import com.rider.jbencode.types.BencodingDictionary;
-import com.rider.jbencode.types.BencodingString;
-import com.rider.jbencode.types.BencodingElement;
 import com.rider.jbencode.exceptions.BencodingException;
+import com.rider.jbencode.types.BencodingDictionary;
+import com.rider.jbencode.types.BencodingElement;
+import com.rider.jbencode.types.BencodingList;
+import com.rider.jbencode.types.BencodingNumber;
+import com.rider.jbencode.types.BencodingString;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -386,7 +386,7 @@ public class Bencoder {
         while ((Character.isDigit(peekSingleCharacter(buffer)))
                 || (('-' == peekSingleCharacter(buffer))) && (firstIteration)) {
             builder.append(readSingleCharacter(buffer));
-            
+
             firstIteration = false;
         }
 
