@@ -10,7 +10,7 @@ Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
 ```
-The call the `read` method on a string :
+Then call the `read` method on a string :
 ```java
 String test = "i20ei-30e6:ciaron5:rider";
 List<BencodingElement> elements = bencoder.read(test);
@@ -33,7 +33,7 @@ Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
 ```
-The call the `read` method on a file :
+Then call the `read` method on a file :
 ```java
 File test = new File("test.dat");
 List<BencodingElement> elements = bencoder.read(test);
