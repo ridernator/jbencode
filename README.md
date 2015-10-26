@@ -3,6 +3,18 @@
 
 It is based on the specification [here](https://wiki.theory.org/BitTorrentSpecification#Bencoding "Bencoding specification")
 
+#####Basically :#####
+---
+![Bencoding Element](diagrams/BencodingElement.png "BencodingElement")
+#####Where :#####
+---
+![Bencoding String](diagrams/BencodingString.png "Bencoding String")
+---
+![Bencoding Number](diagrams/BencodingNumber.png "Bencoding Number")
+---
+![Bencoding List](diagrams/BencodingList.png "Bencoding List")
+---
+![Bencoding Dictionary](diagrams/BencodingDictionary.png "Bencoding Dictionary")
 ###Usage :###
 
 ####Parsing a bencoded string :####
