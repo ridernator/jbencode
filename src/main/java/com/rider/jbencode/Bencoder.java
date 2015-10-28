@@ -103,7 +103,7 @@ public class Bencoder {
 
         // Delete the last element in the list if it is null. This happends if
         // there is trailing whitespace in the file
-        if (returnVal.get(returnVal.size() - 1) == null) {
+        if ((!returnVal.isEmpty()) && (returnVal.get(returnVal.size() - 1) == null)) {
             returnVal.remove(returnVal.size() - 1);
         }
 
@@ -192,14 +192,7 @@ public class Bencoder {
                 }
 
                 default: {
-                    // If the char is whitespace then skip it. If it is something
-                    // unknown then through an exception
-                    if (!Character.isWhitespace(peekSingleCharacter(buffer))) {
-                        throw new BencodingException("Error parsing bencoded data at index \"" + buffer.position() + '\"');
-                    }
-
-                    // Continue to next character
-                    break;
+                    throw new BencodingException("Error parsing bencoded data at index \"" + buffer.position() + '\"');
                 }
             }
         }
@@ -235,7 +228,7 @@ public class Bencoder {
      * @throws BencodingException If there is a problem parsing the CharBuffer's
      * contents
      */
-    private BencodingNumber readNumberElement(final CharBuffer buffer) {
+    private BencodingNumber readNumberElement(final CharBuffer buffer) throws BencodingException {
         final BencodingNumber returnVal;
 
         readSingleCharacter(buffer); // Read 'i'
@@ -255,7 +248,7 @@ public class Bencoder {
      * @throws BencodingException If there is a problem parsing the CharBuffer's
      * contents
      */
-    private BencodingString readStringElement(final CharBuffer buffer) {
+    private BencodingString readStringElement(final CharBuffer buffer) throws BencodingException {
         final long stringLength = readNumber(buffer); // Read size
 
         readSingleCharacter(buffer); // Read ':'
@@ -301,7 +294,7 @@ public class Bencoder {
 
         // Keep reading elements until we hit the termination character
         while (peekSingleCharacter(buffer) != TERMINATION_CHARACTER) {
-            returnVal.put(readStringElement(buffer), readElement(buffer));
+            returnVal.put(readStringElement(buffer).getValue(), readElement(buffer));
         }
 
         readSingleCharacter(buffer); // Read 'e'
@@ -328,7 +321,12 @@ public class Bencoder {
      */
     private void writeStringElement(final BencodingString element,
                                     final StringBuilder builder) {
-        builder.append(element.getValue().length()).append(element.getValue());
+        // Treat null string as empty string
+        if (element.getValue() == null) {
+            builder.append("0:");
+        } else {
+            builder.append(element.getValue().length()).append(':').append(element.getValue());
+        }
     }
 
     /**
@@ -358,8 +356,8 @@ public class Bencoder {
                                         final StringBuilder builder) {
         builder.append(START_DICTIONARY);
 
-        for (final BencodingString subElement : element.keySet()) {
-            writeStringElement(subElement, builder);
+        for (final String subElement : element.keySet()) {
+            writeStringElement(new BencodingString(subElement), builder);
             writeElement(element.get(subElement), builder);
         }
 
@@ -372,7 +370,7 @@ public class Bencoder {
      * @param buffer The buffer to read the long from
      * @return The long read
      */
-    private long readNumber(final CharBuffer buffer) {
+    private long readNumber(final CharBuffer buffer) throws BencodingException {
         final StringBuilder builder = new StringBuilder();
         boolean firstIteration = true;
 
@@ -390,7 +388,11 @@ public class Bencoder {
             firstIteration = false;
         }
 
-        return Long.valueOf(builder.toString());
+        try {
+            return Long.valueOf(builder.toString());
+        } catch (final NumberFormatException exception) {
+            throw new BencodingException("Error converting string to number \"" + builder.toString() + "\"");
+        }
     }
 
     /**
@@ -400,7 +402,7 @@ public class Bencoder {
      * @return The string read
      */
     private String readString(final CharBuffer buffer,
-                              final long size) {
+                              final long size) throws BencodingException {
         final StringBuilder builder = new StringBuilder();
 
         // Read size characters into the StringBuilder
@@ -417,8 +419,12 @@ public class Bencoder {
      * @param buffer The buffer to read the character from
      * @return The character read
      */
-    private char readSingleCharacter(final CharBuffer buffer) {
-        return buffer.get();
+    private char readSingleCharacter(final CharBuffer buffer) throws BencodingException {
+        try {
+            return buffer.get();
+        } catch (final IndexOutOfBoundsException exception) {
+            throw new BencodingException("Unexpected end of string at " + buffer.position());
+        }
     }
 
     /**
@@ -428,7 +434,11 @@ public class Bencoder {
      * @param buffer The buffer to peek at
      * @return The character seen
      */
-    private char peekSingleCharacter(final CharBuffer buffer) {
-        return buffer.get(buffer.position());
+    private char peekSingleCharacter(final CharBuffer buffer) throws BencodingException {
+        try {
+            return buffer.get(buffer.position());
+        } catch (final IndexOutOfBoundsException exception) {
+            throw new BencodingException("Unexpected end of string at " + buffer.position());
+        }
     }
 }
