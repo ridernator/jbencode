@@ -17,59 +17,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class for parsing bencoding strings and files and also creating them
+ * Class for parsing bencoding strings and files and also creating them.
  *
  * @author Ciaron Rider
  */
 public class Bencoder {
     /**
-     * Start tag for a bencoded number
+     * Start tag for a bencoded number.
      */
     private static final char START_NUMBER = 'i';
 
     /**
-     * Start tag for a bencoded list
+     * Start tag for a bencoded list.
      */
     private static final char START_LIST = 'l';
 
     /**
-     * Start tag for a bencoded dictionary
+     * Start tag for a bencoded dictionary.
      */
     private static final char START_DICTIONARY = 'd';
 
     /**
-     * End tag for bencoded numbers, lists and dictionaries
+     * End tag for bencoded numbers, lists and dictionaries.
      */
     private static final char TERMINATION_CHARACTER = 'e';
 
     /**
-     * Constructor for this class
+     * Constructor for this class.
      */
     public Bencoder() {
         // Do nothing 
     }
 
     /**
-     * Read bencoded data from a string and output a list of bencoded elements
+     * Read bencoded data from a string and output a list of bencoded elements.
      *
-     * @param string The string to parse
-     * @return A list of bencoded elements
+     * @param string The string to parse.
+     * @return A list of bencoded elements.
      * @throws BencodingException If there is a problem parsing the string's
-     * contents
+     * contents.
      */
     public List<BencodingElement> read(final String string) throws BencodingException {
         return read(CharBuffer.wrap(string));
     }
 
     /**
-     * Read bencoded data from a file and output a list of bencoded elements
+     * Read bencoded data from a file and output a list of bencoded elements.
      *
-     * @param file The file to parse
-     * @return A list of bencoded elements
-     * @throws FileNotFoundException If the file cannot be found
-     * @throws IOException If there is a problem reading of closing the file
+     * @param file The file to parse.
+     * @return A list of bencoded elements.
+     * @throws FileNotFoundException If the file cannot be found.
+     * @throws IOException If there is a problem reading of closing the file.
      * @throws BencodingException If there is a problem parsing the file's
-     * contents
+     * contents.
      */
     public List<BencodingElement> read(final File file) throws FileNotFoundException, IOException, BencodingException {
         // Allocate a big enough buffer
@@ -86,12 +86,12 @@ public class Bencoder {
 
     /**
      * Read bencoded data from a CharBuffer and output a list of bencoded
-     * elements
+     * elements.
      *
-     * @param buffer The CharBuffer to parse
-     * @return A list of bencoded elements
+     * @param buffer The CharBuffer to parse.
+     * @return A list of bencoded elements.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private List<BencodingElement> read(final CharBuffer buffer) throws BencodingException {
         final List<BencodingElement> returnVal = new ArrayList<>();
@@ -111,10 +111,10 @@ public class Bencoder {
     }
 
     /**
-     * Write a list of elements to a string as bencoded data
+     * Write a list of elements to a string as bencoded data.
      *
-     * @param elements The elements to write
-     * @return The bencoded representation of the data
+     * @param elements The elements to write.
+     * @return The bencoded representation of the data.
      */
     public String write(final List<BencodingElement> elements) {
         final StringBuilder builder = new StringBuilder();
@@ -128,11 +128,11 @@ public class Bencoder {
     }
 
     /**
-     * Write a list of elements to a file as bencoded data
+     * Write a list of elements to a file as bencoded data.
      *
-     * @param elements The elements to write
-     * @param file The file to output to
-     * @throws IOException If there is a problem finding the file or closing it
+     * @param elements The elements to write.
+     * @param file The file to output to.
+     * @throws IOException If there is a problem finding the file or closing it.
      */
     public void write(final List<BencodingElement> elements,
                       final File file) throws IOException {
@@ -144,12 +144,12 @@ public class Bencoder {
     }
 
     /**
-     * Read a bencoded element from a CharBuffer
+     * Read a bencoded element from a CharBuffer.
      *
-     * @param buffer The buffer to read from
-     * @return The bencoded element or null if none was found
+     * @param buffer The buffer to read from.
+     * @return The bencoded element or null if none was found.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private BencodingElement readElement(final CharBuffer buffer) throws BencodingException {
         BencodingElement element = null;
@@ -199,10 +199,10 @@ public class Bencoder {
     }
 
     /**
-     * Write an element to a StringBuilder as bencoded data
+     * Write an element to a StringBuilder as bencoded data.
      *
-     * @param element The element to write
-     * @param builder The StringBuilder to write to
+     * @param element The element to write.
+     * @param builder The StringBuilder to write to.
      */
     private void writeElement(final BencodingElement element,
                               final StringBuilder builder) {
@@ -219,12 +219,12 @@ public class Bencoder {
     }
 
     /**
-     * Read a bencoded number element from a CharBuffer
+     * Read a bencoded number element from a CharBuffer.
      *
-     * @param buffer The buffer to read from
-     * @return The bencoded number element or null if none was found
+     * @param buffer The buffer to read from.
+     * @return The bencoded number element or null if none was found.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private BencodingNumber readNumberElement(final CharBuffer buffer) throws BencodingException {
         final BencodingNumber returnVal;
@@ -239,12 +239,12 @@ public class Bencoder {
     }
 
     /**
-     * Read a bencoded string element from a CharBuffer
+     * Read a bencoded string element from a CharBuffer.
      *
-     * @param buffer The buffer to read from
-     * @return The bencoded string element or null if none was found
+     * @param buffer The buffer to read from.
+     * @return The bencoded string element or null if none was found.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private BencodingString readStringElement(final CharBuffer buffer) throws BencodingException {
         final long stringLength = readNumber(buffer); // Read size
@@ -255,12 +255,12 @@ public class Bencoder {
     }
 
     /**
-     * Read a bencoded list element from a CharBuffer
+     * Read a bencoded list element from a CharBuffer.
      *
-     * @param buffer The buffer to read from
-     * @return The bencoded list element or null if none was found
+     * @param buffer The buffer to read from.
+     * @return The bencoded list element or null if none was found.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private BencodingList readListElement(final CharBuffer buffer) throws BencodingException {
         final BencodingList returnVal = new BencodingList();
@@ -278,12 +278,12 @@ public class Bencoder {
     }
 
     /**
-     * Read a bencoded dictionary element from a CharBuffer
+     * Read a bencoded dictionary element from a CharBuffer.
      *
-     * @param buffer The buffer to read from
-     * @return The bencoded dictionary element or null if none was found
+     * @param buffer The buffer to read from.
+     * @return The bencoded dictionary element or null if none was found.
      * @throws BencodingException If there is a problem parsing the CharBuffer's
-     * contents
+     * contents.
      */
     private BencodingDictionary readDictionaryElement(final CharBuffer buffer) throws BencodingException {
         final BencodingDictionary returnVal = new BencodingDictionary();
@@ -301,10 +301,10 @@ public class Bencoder {
     }
 
     /**
-     * Write a number element to a StringBuilder as bencoded data
+     * Write a number element to a StringBuilder as bencoded data.
      *
-     * @param element The number element to write
-     * @param builder The StringBuilder to write to
+     * @param element The number element to write.
+     * @param builder The StringBuilder to write to.
      */
     private void writeNumberElement(final BencodingNumber element,
                                     final StringBuilder builder) {
@@ -312,10 +312,10 @@ public class Bencoder {
     }
 
     /**
-     * Write a string element to a StringBuilder as bencoded data
+     * Write a string element to a StringBuilder as bencoded data.
      *
-     * @param element The string element to write
-     * @param builder The StringBuilder to write to
+     * @param element The string element to write.
+     * @param builder The StringBuilder to write to.
      */
     private void writeStringElement(final BencodingString element,
                                     final StringBuilder builder) {
@@ -328,10 +328,10 @@ public class Bencoder {
     }
 
     /**
-     * Write a list element to a StringBuilder as bencoded data
+     * Write a list element to a StringBuilder as bencoded data.
      *
-     * @param element The list element to write
-     * @param builder The StringBuilder to write to
+     * @param element The list element to write.
+     * @param builder The StringBuilder to write to.
      */
     private void writeListElement(final BencodingList element,
                                   final StringBuilder builder) {
@@ -345,10 +345,10 @@ public class Bencoder {
     }
 
     /**
-     * Write a dictionary element to a StringBuilder as bencoded data
+     * Write a dictionary element to a StringBuilder as bencoded data.
      *
-     * @param element The dictionary element to write
-     * @param builder The StringBuilder to write to
+     * @param element The dictionary element to write.
+     * @param builder The StringBuilder to write to.
      */
     private void writeDictionaryElement(final BencodingDictionary element,
                                         final StringBuilder builder) {
@@ -363,10 +363,10 @@ public class Bencoder {
     }
 
     /**
-     * Read a long from a CharBuffer
+     * Read a long from a CharBuffer.
      *
-     * @param buffer The buffer to read the long from
-     * @return The long read
+     * @param buffer The buffer to read the long from.
+     * @return The long read.
      */
     private long readNumber(final CharBuffer buffer) throws BencodingException {
         final StringBuilder builder = new StringBuilder();
@@ -394,10 +394,10 @@ public class Bencoder {
     }
 
     /**
-     * Read a string from a CharBuffer
+     * Read a string from a CharBuffer.
      *
-     * @param buffer The buffer to read the string from
-     * @return The string read
+     * @param buffer The buffer to read the string from.
+     * @return The string read.
      */
     private String readString(final CharBuffer buffer,
                               final long size) throws BencodingException {
@@ -412,10 +412,10 @@ public class Bencoder {
     }
 
     /**
-     * Read a single character from a CharBuffer
+     * Read a single character from a CharBuffer.
      *
-     * @param buffer The buffer to read the character from
-     * @return The character read
+     * @param buffer The buffer to read the character from.
+     * @return The character read.
      */
     private char readSingleCharacter(final CharBuffer buffer) throws BencodingException {
         try {
@@ -427,10 +427,10 @@ public class Bencoder {
 
     /**
      * Peek at the next character in a CharBuffer without incrementing the
-     * buffer's position
+     * buffer's position.
      *
-     * @param buffer The buffer to peek at
-     * @return The character seen
+     * @param buffer The buffer to peek at.
+     * @return The character seen.
      */
     private char peekSingleCharacter(final CharBuffer buffer) throws BencodingException {
         try {

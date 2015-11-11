@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Class representing a bencoded list (Extends ArrayList)
+ * Class representing a bencoded list (Extends ArrayList).
  *
  * @author Ciaron Rider
  */
@@ -23,14 +23,14 @@ public class BencodingList extends ArrayList<BencodingElement> implements Bencod
     }
 
     /**
-     * Create a new instance of a BencodingList from a list of Objects The
+     * Create a new instance of a BencodingList from a list of Objects. The
      * Objects in the list must be capable of being converted to Bencoded
-     * objects
+     * objects.
      *
-     * @param value The list of objects to create the BencodingList from
-     * @return The newly created BencodingList
+     * @param value The list of objects to create the BencodingList from.
+     * @return The newly created BencodingList.
      * @throws BencodingException If there is a problem converting one of the
-     * elements in the list to a BencodingElement
+     * elements in the list to a BencodingElement.
      */
     public static BencodingList create(final List<Object> value) throws BencodingException {
         final BencodingList returnVal = new BencodingList();

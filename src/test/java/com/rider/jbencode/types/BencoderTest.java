@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Test of the Bencoder class
+ * Test of the Bencoder class.
  *
  * @author Ciaron Rider
  */

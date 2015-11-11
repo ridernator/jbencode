@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * Class representing a bencoded dictionary (Extends HashMap)
+ * Class representing a bencoded dictionary (Extends HashMap).
  *
  * @author Ciaron Rider
  */
@@ -23,22 +23,23 @@ public class BencodingDictionary extends LinkedHashMap<String, BencodingElement>
     }
 
     /**
-     * Create a new instance of a BencodingDictionary from a HashMap of Objects. The
-     * Objects in the HashMap must be capable of being converted to Bencoded
-     * objects
+     * Create a new instance of a BencodingDictionary from a HashMap of Objects.
+     * The Objects in the HashMap must be capable of being converted to Bencoded
+     * objects.
      *
-     * @param value The HashMap of objects to create the BencodingDictionary from
-     * @return The newly created BencodingDictionary
+     * @param value The HashMap of objects to create the BencodingDictionary
+     * from.
+     * @return The newly created BencodingDictionary.
      * @throws BencodingException If there is a problem converting one of the
-     * elements in the HashMap to a BencodingDictionary
+     * elements in the HashMap to a BencodingDictionary.
      */
     public static BencodingDictionary create(final HashMap<String, Object> value) throws BencodingException {
         final BencodingDictionary returnVal = new BencodingDictionary();
-        Object object;        
+        Object object;
 
         for (final String key : value.keySet()) {
             object = value.get(key);
-            
+
             if (object == null) {
                 throw new BencodingException("Unable to convert null to a BencodingElement");
             } else {

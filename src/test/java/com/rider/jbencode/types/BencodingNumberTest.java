@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Test of the BencodingNumber class
+ * Test of the BencodingNumber class.
  *
  * @author Ciaron Rider
  */

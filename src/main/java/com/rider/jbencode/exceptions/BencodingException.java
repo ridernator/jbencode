@@ -1,20 +1,20 @@
 package com.rider.jbencode.exceptions;
 
 /**
- * An exception to do with encoding / decoding bencoded data
+ * An exception to do with encoding / decoding bencoded data.
  *
  * @author Ciaron Rider
  */
 public class BencodingException extends Throwable {
     /**
-     * The error message
+     * The error message.
      */
     private final String errorMessage;
 
     /**
-     * The constructor for this class
+     * The constructor for this class.
      *
-     * @param errorMessage The error message
+     * @param errorMessage The error message.
      */
     public BencodingException(final String errorMessage) {
         this.errorMessage = errorMessage;

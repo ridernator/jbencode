@@ -1,64 +1,64 @@
 package com.rider.jbencode.types;
 
 /**
- * Class representing a bencoded number
+ * Class representing a bencoded number.
  *
  * @author Ciaron Rider
  */
 public final class BencodingNumber implements BencodingElement {
     /**
-     * The long value (long to allows large numbers)
+     * The long value (long to allows large numbers).
      */
     private long value;
 
     /**
-     * Constructor for this class
+     * Constructor for this class.
      */
     public BencodingNumber() {
         // Do nothing
     }
 
     /**
-     * Constructor for this class
+     * Constructor for this class.
      *
-     * @param value The long value to set
+     * @param value The long value to set.
      */
     public BencodingNumber(final long value) {
         setValue(value);
     }
 
     /**
-     * Copy constructor
+     * Copy constructor.
      *
-     * @param bencodingNumber The object to copy from
+     * @param bencodingNumber The object to copy from.
      */
     public BencodingNumber(final BencodingNumber bencodingNumber) {
         setValue(bencodingNumber.getValue());
     }
 
     /**
-     * Create a new instance of a BencodingNumber from a long
+     * Create a new instance of a BencodingNumber from a long.
      *
-     * @param value The long to create the BencodingNumber from
-     * @return The newly created BencodingNumber
+     * @param value The long to create the BencodingNumber from.
+     * @return The newly created BencodingNumber.
      */
     public static BencodingNumber create(final long value) {
         return new BencodingNumber(value);
     }
 
     /**
-     * Get the long value
+     * Get the long value.
      *
-     * @return The long value
+     * @return The long value.
      */
     public long getValue() {
         return value;
     }
 
     /**
-     * Set the long value
+     * Set the long value.
      *
-     * @param value The long value to set
+     * @param value The long value to set.
      */
     public void setValue(final long value) {
         this.value = value;

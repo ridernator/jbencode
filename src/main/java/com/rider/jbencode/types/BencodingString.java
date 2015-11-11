@@ -1,64 +1,64 @@
 package com.rider.jbencode.types;
 
 /**
- * Class representing a bencoded string
+ * Class representing a bencoded string.
  *
  * @author Ciaron Rider
  */
 public final class BencodingString implements BencodingElement {
     /**
-     * The string value
+     * The string value.
      */
     private String value;
 
     /**
-     * Constructor for this class
+     * Constructor for this class.
      */
     public BencodingString() {
         // Do nothing
     }
 
     /**
-     * Constructor for this class
+     * Constructor for this class.
      *
-     * @param value The string value to set
+     * @param value The string value to set.
      */
     public BencodingString(final String value) {
         setValue(value);
     }
 
     /**
-     * Copy constructor
+     * Copy constructor.
      *
-     * @param bencodingString The object to copy from
+     * @param bencodingString The object to copy from.
      */
     public BencodingString(final BencodingString bencodingString) {
         setValue(bencodingString.getValue());
     }
 
     /**
-     * Create a new instance of a BencodingString from a String
+     * Create a new instance of a BencodingString from a String.
      *
-     * @param value The string to create the BencodingString from
-     * @return The newly created BencodingString
+     * @param value The string to create the BencodingString from.
+     * @return The newly created BencodingString.
      */
     public static BencodingString create(final String value) {
         return new BencodingString(value);
     }
 
     /**
-     * The the string value
+     * The the string value.
      *
-     * @return The string value
+     * @return The string value.
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * Set the string value
+     * Set the string value.
      *
-     * @param value The string value to set
+     * @param value The string value to set.
      */
     public void setValue(final String value) {
         this.value = value;
