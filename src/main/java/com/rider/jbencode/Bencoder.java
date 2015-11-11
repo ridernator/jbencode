@@ -46,7 +46,7 @@ public class Bencoder {
      * Constructor for this class.
      */
     public Bencoder() {
-        // Do nothing 
+        super();
     }
 
     /**

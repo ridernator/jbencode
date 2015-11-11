@@ -15,7 +15,7 @@ public final class BencodingString implements BencodingElement {
      * Constructor for this class.
      */
     public BencodingString() {
-        // Do nothing
+        super();
     }
 
     /**
@@ -34,16 +34,6 @@ public final class BencodingString implements BencodingElement {
      */
     public BencodingString(final BencodingString bencodingString) {
         setValue(bencodingString.getValue());
-    }
-
-    /**
-     * Create a new instance of a BencodingString from a String.
-     *
-     * @param value The string to create the BencodingString from.
-     * @return The newly created BencodingString.
-     */
-    public static BencodingString create(final String value) {
-        return new BencodingString(value);
     }
 
     /**

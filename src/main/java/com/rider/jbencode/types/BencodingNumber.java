@@ -15,7 +15,7 @@ public final class BencodingNumber implements BencodingElement {
      * Constructor for this class.
      */
     public BencodingNumber() {
-        // Do nothing
+        super();
     }
 
     /**
@@ -34,16 +34,6 @@ public final class BencodingNumber implements BencodingElement {
      */
     public BencodingNumber(final BencodingNumber bencodingNumber) {
         setValue(bencodingNumber.getValue());
-    }
-
-    /**
-     * Create a new instance of a BencodingNumber from a long.
-     *
-     * @param value The long to create the BencodingNumber from.
-     * @return The newly created BencodingNumber.
-     */
-    public static BencodingNumber create(final long value) {
-        return new BencodingNumber(value);
     }
 
     /**
