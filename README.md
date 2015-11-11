@@ -95,3 +95,15 @@ Call the write method to write the elements as bencoded data to file:
 ```java
 bencoder.write(elements, file);
 ```
+####Converting real data to bencoded data####
+Create your data :
+```java
+final HashMap<String, Object> objects = new HashMap<>();
+objects.put("a", "test");
+objects.put("b", 1);
+objects.put("c", 2); // Or you could ArrayList<Objects> or other HashMaps
+```
+Pass you data into the Bencoded Type constructor :
+```java
+BencodingDictionary bencodingDict = new BencodingDictionary(objects);
+```
