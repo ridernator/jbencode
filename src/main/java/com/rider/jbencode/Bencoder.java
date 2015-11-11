@@ -154,46 +154,44 @@ public class Bencoder {
     private BencodingElement readElement(final CharBuffer buffer) throws BencodingException {
         BencodingElement element = null;
 
-        while (element == null) { // This wile loop is used to skip whitespace
-            // Peek at the next character
-            switch (peekSingleCharacter(buffer)) {
-                case START_NUMBER: {
-                    element = readNumberElement(buffer);
+        // Peek at the next character
+        switch (peekSingleCharacter(buffer)) {
+            case START_NUMBER: {
+                element = readNumberElement(buffer);
 
-                    break;
-                }
+                break;
+            }
 
-                // A number means a string is coming
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9': {
-                    element = readStringElement(buffer);
+            // A number means a string is coming
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9': {
+                element = readStringElement(buffer);
 
-                    break;
-                }
+                break;
+            }
 
-                case START_LIST: {
-                    element = readListElement(buffer);
+            case START_LIST: {
+                element = readListElement(buffer);
 
-                    break;
-                }
+                break;
+            }
 
-                case START_DICTIONARY: {
-                    element = readDictionaryElement(buffer);
+            case START_DICTIONARY: {
+                element = readDictionaryElement(buffer);
 
-                    break;
-                }
+                break;
+            }
 
-                default: {
-                    throw new BencodingException("Error parsing bencoded data at index \"" + buffer.position() + '\"');
-                }
+            default: {
+                throw new BencodingException("Error parsing bencoded data at index \"" + buffer.position() + '\"');
             }
         }
 
