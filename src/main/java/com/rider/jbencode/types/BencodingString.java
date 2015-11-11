@@ -37,6 +37,16 @@ public final class BencodingString implements BencodingElement {
     }
 
     /**
+     * Create a new instance of a BencodingString from a String
+     *
+     * @param value The string to create the BencodingString from
+     * @return The newly created BencodingString
+     */
+    public static BencodingString create(final String value) {
+        return new BencodingString(value);
+    }
+
+    /**
      * The the string value
      *
      * @return The string value

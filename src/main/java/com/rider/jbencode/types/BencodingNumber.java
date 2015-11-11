@@ -37,6 +37,16 @@ public final class BencodingNumber implements BencodingElement {
     }
 
     /**
+     * Create a new instance of a BencodingNumber from a long
+     *
+     * @param value The long to create the BencodingNumber from
+     * @return The newly created BencodingNumber
+     */
+    public static BencodingNumber create(final long value) {
+        return new BencodingNumber(value);
+    }
+
+    /**
      * Get the long value
      *
      * @return The long value
