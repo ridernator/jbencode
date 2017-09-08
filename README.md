@@ -15,6 +15,7 @@ It is based on the specification [here](https://wiki.theory.org/BitTorrentSpecif
 ![Bencoding List](diagrams/BencodingList.png "Bencoding List")
 ---
 ![Bencoding Dictionary](diagrams/BencodingDictionary.png "Bencoding Dictionary")
+
 ###Usage :###
 
 ####Parsing a bencoded string :####
