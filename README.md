@@ -1,9 +1,9 @@
 # jbencode
-##Java library for parsing and creating bencoded files and string
+## Java library for parsing and creating bencoded files and strings
 
 It is based on the specification [here](https://wiki.theory.org/BitTorrentSpecification#Bencoding "Bencoding specification")
 
-#####Basically :#####
+##### Basically :
 ---
 ![Bencoding Element](diagrams/BencodingElement.png "BencodingElement")
 #####Where :#####
