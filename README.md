@@ -100,7 +100,7 @@ objects.put("a", "test");
 objects.put("b", 1);
 objects.put("c", 2); // Or you could ArrayList<Objects> or other HashMaps
 ```
-Pass you data into the Bencoded Type constructor :
+Pass your data into the Bencoded Type constructor :
 ```java
 BencodingDictionary bencodingDict = new BencodingDictionary(objects);
 ```
