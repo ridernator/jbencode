@@ -6,7 +6,7 @@ It is based on the specification [here](https://wiki.theory.org/BitTorrentSpecif
 ##### Basically :
 ---
 ![Bencoding Element](diagrams/BencodingElement.png "BencodingElement")
-#####Where :#####
+##### Where :
 ---
 ![Bencoding String](diagrams/BencodingString.png "Bencoding String")
 ---
@@ -16,9 +16,9 @@ It is based on the specification [here](https://wiki.theory.org/BitTorrentSpecif
 ---
 ![Bencoding Dictionary](diagrams/BencodingDictionary.png "Bencoding Dictionary")
 
-###Usage :###
+### Usage :
 
-####Parsing a bencoded string :####
+#### Parsing a bencoded string :
 Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
@@ -41,7 +41,7 @@ Outputs :
 ciaron
 rider
 ```
-####Parsing a bencoded file :####
+#### Parsing a bencoded file :
 Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
@@ -57,7 +57,7 @@ for (BencodingElement element : elements) {
   System.out.println(element);
 }
 ```
-####Creating a bencoded string####
+#### Creating a bencoded string
 Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
@@ -77,7 +77,7 @@ Outputs :
 ```
 i100e10testString
 ```
-####Creating a bencoded file####
+#### Creating a bencoded file
 Create a Bencoder object :
 ```java
 Bencoder bencoder = new Bencoder();
@@ -96,7 +96,7 @@ Call the write method to write the elements as bencoded data to file:
 ```java
 bencoder.write(elements, file);
 ```
-####Converting real data to bencoded data####
+#### Converting real data to bencoded data
 Create your data :
 ```java
 final HashMap<String, Object> objects = new HashMap<>();
